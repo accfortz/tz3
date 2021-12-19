@@ -26,6 +26,6 @@ jobs:
         uses: joshmgross/send-slack-message@v1.0.1
         if: always()
         with:
-          message: ${{ commit.sha }}
+          message: '{status_message}'
           slack-token: ${{ secrets.SLACK_BOT_TOKEN }}
           channel: ${{ secrets.SLACK_ID }}
