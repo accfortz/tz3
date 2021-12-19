@@ -26,6 +26,6 @@ jobs:
         uses: joshmgross/send-slack-message@v1.0.1
         if: always()
         with:
-          message: ${{ jobs.status }}
+          message: ${{ job.status }}
           slack-token: ${{ secrets.SLACK_BOT_TOKEN }}
           channel: ${{ secrets.SLACK_ID }}
