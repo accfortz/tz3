@@ -12,6 +12,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Slack Messenger
+        uses: joshmgross/send-slack-message@v1.0.1
+        with:
+          message: ${{ job.status }}
+          slack-token: ${{ secrets.SLACK_BOT_TOKEN }}
+          channel: ${{ secrets.SLACK_ID }}
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -22,9 +28,3 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Test with unittest
         run: python -m unittest discover .
-      - name: Slack Messenger
-        uses: joshmgross/send-slack-message@v1.0.1
-        with:
-          message: ${{ job.status }}
-          slack-token: ${{ secrets.SLACK_BOT_TOKEN }}
-          channel: ${{ secrets.SLACK_ID }}
