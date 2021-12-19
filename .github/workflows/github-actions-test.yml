@@ -27,4 +27,4 @@ jobs:
         with:
           message: ${{ job.status }}
           slack-token: ${{ secrets.SLACK_BOT_TOKEN }}
-          channel: C02RZCL2GJC
+          channel: ${{ secrets.SLACK_ID }}
