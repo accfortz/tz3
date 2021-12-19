@@ -29,6 +29,6 @@ jobs:
         uses: joshmgross/send-slack-message@v1.0.1
         if: always()
         with:
-          message: ${{ steps.tests.outputs.stdout }}
+          message: ${{ steps.tests.outputs.stderr }}
           slack-token: ${{ secrets.SLACK_BOT_TOKEN }}
           channel: ${{ secrets.SLACK_ID }}
