@@ -12,7 +12,7 @@ class TestNumbersFunctions(unittest.TestCase):
         self.test_list3 = [randint(-100, 100) for _ in range(10)]
 
     def test_min_of_numbers(self):
-        self.assertEqual(min_of_numbers(self.test_list1), min(self.test_list1))
+        self.assertEqual(min_of_numbers(self.test_list1), max(self.test_list1))
         self.assertEqual(min_of_numbers(self.test_list2), min(self.test_list2))
         self.assertEqual(min_of_numbers(self.test_list3), min(self.test_list3))
 
