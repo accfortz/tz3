@@ -21,8 +21,10 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Test with unittest
+        uses: mathiasvr/command-output@v1
         id: tests
-        run: python -m unittest discover .
+        with:
+          run: python -m unittest discover .
       - name: Slack Messenger
         uses: joshmgross/send-slack-message@v1.0.1
         if: always()
