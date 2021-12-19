@@ -21,11 +21,12 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Test with unittest
-        run: python -m unittest discover .
+        run: echo "::set-output name=python -m unittest discover .::$(python -m unittest discover .)"
+        id: tests
       - name: Slack Messenger
         uses: joshmgross/send-slack-message@v1.0.1
         if: always()
         with:
-          message: '{status_message}'
+          message: ${{ steps.tests.outputs.* }}
           slack-token: ${{ secrets.SLACK_BOT_TOKEN }}
           channel: ${{ secrets.SLACK_ID }}
