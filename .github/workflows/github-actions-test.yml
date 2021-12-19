@@ -22,10 +22,10 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Test with unittest
         run: python -m unittest discover .
-      - name: Telegram Notify
-        uses: appleboy/telegram-action@0.0.3
+      - name: slack - GitHub Actions Slack integration
+        uses: act10ns/slack@v1.5.0
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
-          to: ${{ secrets.TELEGRAM_CHAT_ID }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          args: Test message
-      
+          status: ${{ job.status }}
+          channel: '#тз'
