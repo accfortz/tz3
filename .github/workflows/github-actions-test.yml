@@ -23,8 +23,7 @@ jobs:
       - name: Test with unittest
         run: python -m unittest discover .
       - name: Notify slack
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         uses: abinoda/slack-action@master
         with:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           args: '{\"channel\":\"C02RZCL2GJC\",\"text\":\"Hello world\"}'
