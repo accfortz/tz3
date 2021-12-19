@@ -23,7 +23,7 @@ jobs:
       - name: Test with unittest
         run: python -m unittest discover .
       - name: Slack Message
-        uses: accfortz/slack-action@1.0
+        uses: accfortz/tz3@main
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         with:
