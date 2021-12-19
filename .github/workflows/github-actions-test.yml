@@ -22,3 +22,13 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Test with unittest
         run: python -m unittest discover .
+      - name: Slack Message
+        uses: accfortz/slack-action@1.0
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        with:
+         args: |
+           {
+             "channel": "тз",
+             "text": "testing slack messaging"
+           }
