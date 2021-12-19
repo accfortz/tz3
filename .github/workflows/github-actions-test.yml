@@ -23,6 +23,7 @@ jobs:
       - name: Test with unittest
         id: tests
         run: python -m unittest discover .
+        continue-on-error: true
       - name: Slack Messenger
         uses: joshmgross/send-slack-message@v1.0.1
         with:
