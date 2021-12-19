@@ -22,8 +22,10 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Test with unittest
         run: python -m unittest discover .
-      - name: Notify slack
-        uses: abinoda/slack-action@master
+      - name: Telegram Notify
+        uses: appleboy/telegram-action@0.0.3
         with:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          args: '{\"channel\":\"C02RZCL2GJC\",\"text\":\"Hello world\"}'
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: Test message
+      
